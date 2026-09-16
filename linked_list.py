@@ -22,13 +22,18 @@ class LinkedList:
         self.head = new_node       # new node is now the front of the list
 
     def insert_at_end(self, data):
-        """
-        (Optional) TODO:
-        - Create a new Node with 'data'.
-        - Traverse to the end of the list.
-        - Set the last node's 'next' reference to the new node.
-        """
-        pass
+        """(Optional)"""
+        new_node = Node(data)           # create the node to insert
+
+        if self.head is None:           # special case: list is currently empty
+            self.head = new_node        # new node becomes the only node, and the head
+            return
+
+        current = self.head             # start at the front
+        while current.next:             # walk until 'current' is the LAST node (its .next is None)
+            current = current.next
+        current.next = new_node         # attach the new node after the last one
+
 
     # SUM OF LIST
     def recursive_sum(self):
